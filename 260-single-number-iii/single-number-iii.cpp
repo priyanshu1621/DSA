@@ -2,22 +2,41 @@ class Solution {
 public:
     vector<int> singleNumber(vector<int>& nums) {
 
-        unordered_map<int, int> mp;
+        sort(nums.begin(), nums.end());
 
-        for(int &num : nums){
-            mp[num]++;
+        
+
+        for(int i = 0 ; i< nums.size(); i++){
+
+           if( i+1 < nums.size()  &&  nums[i] == nums[i+1]){
+               nums.erase(nums.begin() + i , nums.begin()+i+2);
+               i--;
+           }        
         }
 
-        vector<int> ans;
-
-        for(const auto& num : mp){
-
-            if( num.second == 1) ans.push_back(num.first);         
-        }
-
-        return ans;
+        return nums;
         
     }
+
+    // 2nd approach
+    // vector<int> singleNumber(vector<int>& nums) {
+
+    //     unordered_map<int, int> mp;
+
+    //     for(int &num : nums){
+    //         mp[num]++;
+    //     }
+
+    //     vector<int> ans;
+
+    //     for(const auto& num : mp){
+
+    //         if( num.second == 1) ans.push_back(num.first);         
+    //     }
+
+    //     return ans;
+        
+    // }
 
 // Bit manipulation TC: O(n)
     // vector<int> singleNumber(vector<int>& nums) {
