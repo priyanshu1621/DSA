@@ -21,19 +21,48 @@ public:
     //     return -1;
     // }
 
-    // 2Nd approach
+
+    // 2Nd approach -> sorting
+
+
+    // int singleNumber(vector<int>& nums) {
+    //     sort(nums.begin() , nums.end());
+    //     for(int i = 1 ; i < nums.size(); i+=3){
+    //         if( nums[i] != nums[i-1] ) return nums[i-1];
+    //     }
+    //     return nums[nums.size() -1 ];
+    // }
+
+
+    // 3rd approach -> Bit Manipulation
 
     int singleNumber(vector<int>& nums) {
         
+        int result = 0;
+       
+        for(int i = 0 ; i <= 31; i++){
+            
+            int temp = ( 1 << i );
+            int countZeros = 0;
+            int countOnes = 0;
 
-        sort(nums.begin() , nums.end());
+            for(int &num : nums){
+                if( (num & temp) == 0){
+                    countZeros++;
+                }else{
+                    countOnes++;
+                }
+            }
 
-        for(int i = 1 ; i < nums.size(); i+=3){
-
-            if( nums[i] != nums[i-1] ) return nums[i-1];
-
+            if(countOnes % 3){
+            result = result | temp;  
+            }
         }
     
-        return nums[nums.size() -1 ];
+        
+
+        return result;
     }
+
+
 };
