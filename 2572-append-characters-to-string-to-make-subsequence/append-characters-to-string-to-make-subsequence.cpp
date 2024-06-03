@@ -8,9 +8,10 @@ public:
 
         int i = 0 , j = 0 ;
         int size_t = t.length();
+        int size_s = s.length();
 
         //  Longest common prefix of t in s
-        while( i < s.length() && j < t.length()){
+        while( i < size_s && j < size_t){
             if(s[i] == t[j]){
                
                 j++;
@@ -20,7 +21,7 @@ public:
         }
 
 
-        cout<<"Appending character freq is: "<<(size_t-j)<<" "<<endl;
+        // cout<<"Appending character freq is: "<<(size_t-j)<<" "<<endl;
          return (size_t-j);
 
     }
