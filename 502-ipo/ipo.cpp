@@ -15,12 +15,14 @@ public:
        
         while( k--){
 
+            // Checking the capital values with w and also that the i should not go out of bound
         
             while(i < profits.size() && projects[i].first <= w  ){
                 maxHeap.push(projects[i].second);
                 i++;
             }
 
+            // If the heap is empty break
             if(maxHeap.empty()){
                 break;
             }
