@@ -8,7 +8,7 @@ public:
         }
 
         // Sort the project in te basis of capital default it sort on basis of first
-        sort(projects.begin(), projects.end());
+        sort(projects.begin(), projects.end());     // ->   O(Nlog(n)) -> N = size of size
 
         priority_queue<int> maxHeap;
         int i = 0;
@@ -18,7 +18,7 @@ public:
             // Checking the capital values with w and also that the i should not go out of bound
         
             while(i < profits.size() && projects[i].first <= w  ){
-                maxHeap.push(projects[i].second);
+                maxHeap.push(projects[i].second);         // heap push || pop -> O(Nlog(n)) , here N = K , and log(n) = is heap operation complexity
                 i++;
             }
 
@@ -32,7 +32,11 @@ public:
             w += maxHeap.top();
             maxHeap.pop();
 
-        }
+        }  
+
+        // Total TC:->  O(Nlog(n))  + O(Nlog(n))  =  O(Nlog(n))
+        // SC  -> vector<> -> o(n)  +  Heap -> O(n)  =    O(n)
+
 
         return w;
     }
