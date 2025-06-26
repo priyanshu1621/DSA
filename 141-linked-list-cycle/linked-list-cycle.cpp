@@ -9,20 +9,39 @@
 class Solution {
 public:
     bool hasCycle(ListNode *head) {
-       if(head == NULL || head->next  == NULL) return false;
+    //   if(head == NULL ) return false;
 
-       ListNode* slow = head;
-       ListNode* fast = head -> next;
+    //   map<ListNode*, bool> visited;
+    //   ListNode* temp = head;
 
-       while(fast != slow){
-        if(fast->next == NULL || fast-> next -> next == NULL) return false;
+    //   while(temp != NULL){
+    //     if(visited[temp] == true) return true;
+      
+    //     visited[temp] = true;
+    //     temp = temp -> next;
 
-        slow = slow-> next;
-        fast = fast->next->next;
-       }
+    //   }
 
-       return true;
+    //   return false;
+
+
+        if(head == NULL || head -> next == NULL) return false;
+
+        ListNode* slow = head;
+        ListNode* fast = head-> next;
+
+        while(fast != slow){
+            if(fast-> next == NULL || fast -> next -> next == NULL) return false;
+
+            slow = slow -> next; 
+            fast = fast -> next->next;
+        }
+
+        return true;
+
     }
+    // TC - > O(n)
+    // SC -> O(1)
 };
 
 
